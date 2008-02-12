@@ -1,0 +1,15 @@
+--- #YAML:1.0
+name:                Catalyst-View-PNGTTGraph
+version:             0.02
+abstract:            PNG Graph View Component for Catalyst
+license:             ~
+generated_by:        ExtUtils::MakeMaker version 6.36
+distribution_type:   module
+requires:     
+    Catalyst::View::SVGTTGraph:    0.011
+    Image::LibRSVG:                0.07
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
+    version: 1.2
+author:
+    - Terence Monteiro <terence@deeproot.co.in>
