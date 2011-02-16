@@ -12,5 +12,5 @@ WriteMakefile(
                         }, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/Catalyst/View/PNGTTGraph.pm', # retrieve abstract from module
-       AUTHOR         => 'Terence Monteiro <terence@deeproot.co.in>') : ()),
+       AUTHOR         => 'Terence Monteiro <terencemo@cpan.org>') : ()),
 );

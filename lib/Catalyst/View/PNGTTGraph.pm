@@ -7,7 +7,7 @@ use base qw(Catalyst::View::SVGTTGraph);
 
 my($Revision) = '$Id: PNGTTGraph.pm,v 1.1.1.1 2006/02/11 17:54:15 terence Exp $';
 
-our $VERSION = '0.02';
+our $VERSION = '0.021';
 
 =head1 NAME
 
@@ -15,12 +15,12 @@ Catalyst::View::PNGTTGraph - PNG Graph View Component for Catalyst
 
 =head1 SYNOPSIS
 
-in your View.
+In your View.
 
   package MyApp::View::PNGTTGraph;
   use base 'Catalyst::View::PNGTTGraph';
 
-in your controller.
+In your controller.
 
   sub pie_graph : Local {
       my @fields = qw(Jan Feb Mar);
@@ -54,7 +54,7 @@ Catalyst::View::PNGTTGraph is Catalyst PNG view handler of SVG::TT::Graph.
 
 =head2 new
 
-this method makes method named $c->svgttg.
+This method makes method named $c->svgttg.
 $c->svgttg is an accessor to the object of Catalyst::View::SVGTTGraphObj.
 $c->svgttg uses $c->stash->{'Catalyst::View::SVGTTGraph'}.
 
@@ -72,7 +72,7 @@ sub new {
 
 =head2 process
 
-create PNG Graph
+Create PNG Graph
 
 =cut
 
@@ -80,10 +80,11 @@ sub process {
     my $self = shift;
     my $c = shift;
     
+    my $go;
     die "Catalyst::View::PNGTTGraph : graph object is undefined !"
-        unless($c->svgttg->graph_obj);
-#    $c->log->debug(Dumper($c->view_svggraph));
+        unless($go = $c->svgttg->graph_obj);
 
+    $go->compress(0) if ( $go->VERSION >= 0.13 );
     my $svg_graph = $c->svgttg->burn;
 
     my $rsvg = $self->{rsvg};
@@ -101,7 +102,7 @@ L<Catalyst::View::SVGTTGraph>, L<SVG::TT::Graph>
 
 =head1 AUTHORS
 
-Terence Monteiro <terence@deeproot.co.in>
+Terence Monteiro, C<terencemo@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
